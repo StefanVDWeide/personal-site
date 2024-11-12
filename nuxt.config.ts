@@ -6,12 +6,22 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
     '@nuxtjs/seo',
-    '@nuxt/content'
+    '@nuxt/content',
+    "@nuxt/fonts",
   ],
   site: {
     url: 'https://weidev.nl',
-    name: 'Personal Site',
-    description: 'Welcome!',
-    defaultLocale: 'en',
-  }
+    name: "Stefan van der Weide's Personal Site",
+    description: "The personal blog of Stefan van der Weide. A software engineer and fullstack enthousiast",
+    defaultLocale: "en",
+  },
+  ogImage: {
+    strictNuxtContentPaths: true
+  },
+  content: {
+    highlight: {
+      theme: "github-dark",
+      preload: ["js", "python", "zsh", "rust", "yaml", "dockerfile"],
+    },
+  },
 })
