@@ -2,7 +2,7 @@
   <div class="min-h-screen">
     <main class="w-11/12 lg:w-3/4 font-mono m-auto my-10 text-sm">
       <header class="text-gray-600 flex items-center text-xs">
-        <button class="w-24 h-9 text-left  ">date</button>
+        <button class="w-12 h-9 text-left  ">date</button>
         <span class="grow pl-2">title</span>
         <button class="h-9 pl-4">category</button>
       </header>
@@ -12,8 +12,8 @@
             <span
               class="flex transition-[background-color] hover:bg-[#242424] active:bg-[#222] border-y border-[#313131] border-b-0">
               <span class="py-3 flex grow items-center ">
-                <span class="w-28 inline-block self-start shrink-0 text-gray-500">{{ new
-                  Date(post.date).toISOString().substring(0, 10)
+                <span class="w-14 inline-block self-start shrink-0 text-gray-500">{{ new
+                  Date(post.date).toISOString().substring(0, 4)
                   }}</span>
                 <span class="grow text-gray-100">{{ post.title }}</span>
                 <span class="text-gray-500 text-xs">{{ post.category }}</span>
