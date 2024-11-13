@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen">
-    <div class="w-11/12 lg:w-3/4 grid grid-cols-3 m-auto my-10">
+    <div class="w-11/12 lg:w-3/4 grid grid-cols-1 md:grid-cols-3 m-auto my-10">
       <div v-for="project in projects" class="w-full">
         <NuxtLink :to="project._path">
           <NuxtImg class="w-full" :src="`/images/${project.path}/cover-image.png`" />
