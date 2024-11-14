@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data" class="w-11/12 lg:w-1/2 justify-self-center min-h-screen">
+  <div v-if="data" class="w-full lg:w-1/2 justify-self-center min-h-screen">
     <ContentRenderer :value="data" class="prose lg:prose-xl prose-invert" />
   </div>
 </template>

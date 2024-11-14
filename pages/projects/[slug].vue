@@ -1,5 +1,5 @@
 <template>
-  <div v-if="project" class="w-11/12 lg:w-1/2 justify-self-center min-h-screen">
+  <div v-if="project" class="w-full lg:w-1/2 justify-self-center min-h-screen">
     <div class="mb-12">
       <NuxtImg class="w-full mb-12" :src="`/images/projects/${slug}/cover-image.png`" />
       <h1 class="text-4xl font-extrabold">{{ project.title }}</h1>
