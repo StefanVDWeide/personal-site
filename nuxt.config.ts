@@ -20,6 +20,6 @@ export default defineNuxtConfig({
   },
   plausible: {
     ignoredHostnames: ['localhost'],
-    apiHost: "stats.weidev.nl"
+    apiHost: "https://stats.weidev.nl"
   }
 })
