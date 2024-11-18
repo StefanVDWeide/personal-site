@@ -2,13 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/image',
-    '@nuxtjs/seo',
-    '@nuxt/content',
-    "@nuxt/fonts",
-  ],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxtjs/seo', '@nuxt/content', "@nuxt/fonts", "@nuxtjs/plausible"],
   site: {
     url: 'https://weidev.nl',
     name: "Stefan van der Weide's Personal Site",
@@ -24,4 +18,8 @@ export default defineNuxtConfig({
       preload: ["js", "python", "zsh", "rust", "yaml", "dockerfile"],
     },
   },
+  plausible: {
+    ignoredHostnames: ['localhost'],
+    apiHost: "stats.weidev.nl"
+  }
 })
