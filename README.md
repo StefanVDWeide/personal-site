@@ -10,6 +10,14 @@ The blog is built using the Nuxt ecosystem, chosen for its simplicity and flexib
 
 Nuxt Content is a headless CMS that allows for easy management of content files, like blog posts and static pages, directly in Markdown. It discovers Markdown files in the content directory and automatically renders them with customizable styles. This plugin enables easy content creation without needing a traditional database or CMS interface, which simplifies both the tech stack and maintenance efforts. You can find more details [here](https://content.nuxt.com/).
 
+A custom image component has been implemented that allows visitors to click on the image and enlarge it. It can be used in markdown files like so:
+
+```markdown
+::enlarge-img{src="/images/projects/personal-blog/cover-image.png" alt="Example Image"}
+Click the image to enlarge it.
+::
+```
+
 ### Nuxt SEO
 
 Nuxt SEO centralizes and simplifies search engine optimization tasks, allowing easy configuration of essential SEO elements. It streamlines the addition of meta tags, OG (Open Graph) images, sitemaps, and `robots.txt` files across the entire site. By automating these SEO aspects, Nuxt SEO enhances discoverability on search engines with minimal setup. More information is available [here](https://nuxtseo.com/).
