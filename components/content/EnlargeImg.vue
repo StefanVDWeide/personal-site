@@ -1,30 +1,25 @@
 <template>
   <div class="relative cursor-pointer" @click="toggleEnlarge">
-    <NuxtImg v-bind="$attrs" :class="{
-      'w-full': !enlarge,
-      'w-3/5 flex self-center fixed inset-0 top-0 left-0 right-0 bottom-0 m-auto z-50 object-contain': enlarge
-    }" />
-    <div v-if="enlarge" class="fixed top-0 left-0 right-0 bottom-0 bg-black opacity-50 z-40" @click="toggleEnlarge">
+    <div v-if="enlarge" class="fixed top-0 left-0 right-0 bottom-0 z-40 flex items-center justify-center">
+      <!-- Background Layer with Semi-Transparent Black and Transition -->
+      <div class="absolute inset-0 bg-black opacity-50 transition-opacity duration-300"></div>
+
+      <!-- Centered Image with Transition -->
+      <NuxtImg v-bind="$attrs" class="relative w-1/2 py-4 object-contain transition-transform duration-300 scale-100" />
     </div>
-    <div v-if="!enlarge">
+
+    <div v-else>
+      <!-- Default Image with Transition -->
+      <NuxtImg v-bind="$attrs" class="w-full transition-transform duration-300" />
       <slot />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-
 const enlarge = ref(false);
 
 const toggleEnlarge = () => {
   enlarge.value = !enlarge.value;
 };
 </script>
-
-<style scoped>
-/* Optional: Smooth transition for image enlargement */
-img {
-  transition: transform 0.3s ease;
-}
-</style>
