@@ -7,7 +7,7 @@
         <button class="h-9 pl-4">category</button>
       </header>
       <ul>
-        <li v-for="(post, index) in posts" :key="index">
+        <li v-for="(post, index) in allContent" :key="index">
           <NuxtLink :to="post._path">
             <span
               class="flex transition-[background-color] hover:bg-[#242424] active:bg-[#222] border-y border-[#313131] border-b-0">
@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 // Define the OgImage for this page
 defineOgImageComponent("GeneralPage", {
-  title: "Home"
+  title: "Home",
 });
 
 // Define the SEO metadata
@@ -37,9 +37,12 @@ useSeoMeta({
   ogTitle: "Home",
   description: "The personal blog of Stefan van der Weide. A software engineer and fullstack enthousiast",
   ogDescription: "The personal blog of Stefan van der Weide. A software engineer and fullstack enthousiast",
-})
+});
 
-// Fetch blog post data
-const { data: posts } = await useAsyncData("posts", () => queryContent("blog").find());
-
+const { data: allContent } = await useAsyncData("allContent", () =>
+  queryContent()
+    .where({ _path: { $not: /^\/about\// } })
+    .sort({ date: -1 })
+    .find()
+);
 </script>
