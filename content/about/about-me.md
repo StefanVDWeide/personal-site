@@ -1,6 +1,6 @@
 # About me
 
-I'm a full stack enthousiast currently working as a back end engineer at [Codebeez](https://codebeez.nl/) and doing freelance work under [Studio Terabyte](https://studioterabyte.nl/).
+I'm a full stack enthousiast currently working as a founding engineer at [NjiaPay](https://www.njiapay.com/) and doing freelance work under [Studio Terabyte](https://studioterabyte.nl/).
 
 I use 🐍 Python and 💻 Typescript professionally and have a personal interest in 🦀 Rust.
 
