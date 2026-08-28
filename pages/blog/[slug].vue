@@ -14,17 +14,24 @@
 <script setup lang="ts">
 // Setup composables
 const route = useRoute();
-const slug = route.params.slug as string;
 
 // Fetch blog post data
-const { data: post } = await useAsyncData(`${slug}`, () => queryContent("blog", slug).findOne());
+const { data: post } = await useAsyncData(route.path, () =>
+  queryCollection("blog").path(route.path).first()
+);
 
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
 
-// Create binding for the OgImage generation
-useContentHead(post.value)
+// Define the OgImage for this page from the content frontmatter
+if (post.value.ogImage?.component) {
+  defineOgImage(post.value.ogImage.component, {
+    title: post.value.title,
+    description: post.value.description,
+    ...post.value.ogImage.props,
+  });
+}
 
 useSeoMeta({
   title: post.value?.title,

@@ -1,16 +1,26 @@
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxtjs/seo', '@nuxt/content', "@nuxt/fonts", "@nuxtjs/plausible"],
-  site: {
-    url: 'https://weidev.nl',
-    name: "Stefan van der Weide's Personal Site",
-    description: "The personal blog of Stefan van der Weide. A software engineer and fullstack enthousiast",
-    defaultLocale: "en",
+  modules: [
+    "@nuxt/image",
+    "@nuxtjs/seo",
+    "@nuxt/content",
+    "@nuxt/fonts",
+    "@nuxtjs/plausible",
+  ],
+  css: ["~/assets/css/main.css"],
+  vite: {
+    plugins: [tailwindcss()],
   },
-  ogImage: {
-    strictNuxtContentPaths: true
+  site: {
+    url: "https://weidev.nl",
+    name: "Stefan van der Weide's Personal Site",
+    description:
+      "The personal blog of Stefan van der Weide. A software engineer and fullstack enthousiast",
+    defaultLocale: "en",
   },
   content: {
     highlight: {
@@ -19,7 +29,7 @@ export default defineNuxtConfig({
     },
   },
   plausible: {
-    ignoredHostnames: ['localhost'],
+    ignoredHostnames: ["localhost"],
     apiHost: process.env.NUXT_PLAUSIBLE_API_HOST,
-  }
-})
+  },
+});

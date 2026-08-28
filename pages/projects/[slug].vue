@@ -17,15 +17,23 @@
 const route = useRoute();
 const slug = route.params.slug as string;
 
-// Fetch blog post data
-const { data: project } = await useAsyncData(`${slug}`, () => queryContent("projects", slug).findOne());
+// Fetch project data
+const { data: project } = await useAsyncData(route.path, () =>
+  queryCollection("projects").path(route.path).first()
+);
 
 if (!project.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
 
-// Create binding for the OgImage generation
-useContentHead(project.value)
+// Define the OgImage for this page from the content frontmatter
+if (project.value.ogImage?.component) {
+  defineOgImage(project.value.ogImage.component, {
+    title: project.value.title,
+    description: project.value.description,
+    ...project.value.ogImage.props,
+  });
+}
 
 useSeoMeta({
   title: project.value?.title,

@@ -4,15 +4,15 @@
   </div>
 </template>
 <script setup lang="ts">
-// Fetch blog post data
-const { data } = await useAsyncData("about", () => queryContent("about", "about-me").findOne());
+// Fetch about page data
+const { data } = await useAsyncData("about", () => queryCollection("about").first());
 
 if (!data.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
 
 // Define the OgImage for this page
-defineOgImageComponent("GeneralPage", {
+defineOgImage("GeneralPage", {
   title: "About"
 });
 

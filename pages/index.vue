@@ -8,7 +8,7 @@
       </header>
       <ul>
         <li v-for="(post, index) in allContent" :key="index">
-          <NuxtLink :to="post._path">
+          <NuxtLink :to="post.path">
             <span
               class="flex transition-[background-color] hover:bg-[#242424] active:bg-[#222] border-y border-[#313131] border-b-0">
               <span class="py-3 flex grow items-center ">
@@ -27,7 +27,7 @@
 </template>
 <script lang="ts" setup>
 // Define the OgImage for this page
-defineOgImageComponent("GeneralPage", {
+defineOgImage("GeneralPage", {
   title: "Home",
 });
 
@@ -39,10 +39,14 @@ useSeoMeta({
   ogDescription: "The personal blog of Stefan van der Weide. A software engineer and fullstack enthousiast",
 });
 
-const { data: allContent } = await useAsyncData("allContent", () =>
-  queryContent()
-    .where({ _path: { $not: /^\/about\// } })
-    .sort({ date: -1 })
-    .find()
+const [{ data: blogPosts }, { data: projects }] = await Promise.all([
+  useAsyncData("home-blog", () => queryCollection("blog").all()),
+  useAsyncData("home-projects", () => queryCollection("projects").all()),
+]);
+
+const allContent = computed(() =>
+  [...(blogPosts.value ?? []), ...(projects.value ?? [])].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
 );
 </script>

@@ -1,7 +1,8 @@
-/** @type {import('tailwindcss').Config} */
-const plugin = require('tailwindcss/plugin');
+import plugin from 'tailwindcss/plugin';
+import typography from '@tailwindcss/typography';
 
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
   theme: {
     extend: {
       colors: {
@@ -32,7 +33,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
     plugin(function ({ addVariant }) {
       addVariant(
         'prose-inline-code',
