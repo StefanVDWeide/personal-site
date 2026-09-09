@@ -7,7 +7,7 @@ category: personal
 ogImage:
   component: BlogPost
   props:
-    readingMins: 4
+    readingMins: 1
 sitemap:
   loc: /blog/just-one-more-ai-tool
 ---
